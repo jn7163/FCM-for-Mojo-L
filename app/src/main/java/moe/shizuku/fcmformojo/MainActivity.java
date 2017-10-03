@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.UriPermission;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -67,10 +68,14 @@ public class MainActivity extends BaseActivity {
 
     private void requestPermission() {
         try {
+            //TODO HELP NEEDED: BETTER WAY TO ACQUIRE PERMISSION & PATH?
+            /*
             StorageManager sm = getSystemService(StorageManager.class);
             StorageVolume volume = sm.getPrimaryStorageVolume();
             Intent intent = volume.createAccessIntent(Environment.DIRECTORY_DOWNLOADS);
             startActivityForResult(intent, REQUEST_CODE);
+            */
+            FFMSettings.putDownloadUri("content://com.android.externalstorage.documents/tree/primary%3ADownload");
         } catch (Exception e) {
             Toast.makeText(this, R.string.cannot_request_permission, Toast.LENGTH_LONG).show();
             Log.wtf("FFM", "can't use Scoped Directory Access", e);
@@ -81,12 +86,14 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //Useless Now
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 getContentResolver().takePersistableUriPermission(data.getData(),
                         Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
                 FFMSettings.putDownloadUri(data.getData().toString());
+                Log.d("FFM", data.getData().toString());
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -111,7 +118,7 @@ public class MainActivity extends BaseActivity {
                         .setView(R.layout.dialog_about)
                         .show();
                 ((TextView) dialog.findViewById(R.id.icon_credits)).setMovementMethod(LinkMovementMethod.getInstance());
-                ((TextView) dialog.findViewById(R.id.icon_credits)).setText(Html.fromHtml(getString(R.string.about_icon_credits), Html.FROM_HTML_MODE_COMPACT));
+                ((TextView) dialog.findViewById(R.id.icon_credits)).setText(Html.fromHtml(getString(R.string.about_icon_credits)));
 
                 break;
             case R.id.action_donate:

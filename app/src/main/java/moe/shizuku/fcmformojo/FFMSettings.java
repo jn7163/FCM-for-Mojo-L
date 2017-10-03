@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.annotation.IntDef;
 import android.support.annotation.StringDef;
 import android.support.v4.provider.DocumentFile;
+import android.util.Log;
 
 import java.lang.annotation.Retention;
 import java.util.UUID;

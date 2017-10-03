@@ -10,6 +10,8 @@
 
     <!-- install to /system/priv-app to grant the permission -->
     <uses-permission android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".FFMApplication"

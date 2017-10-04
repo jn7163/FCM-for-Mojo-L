@@ -148,6 +148,7 @@
     <string name="whitelist_summary_discuss_on">只接受开启的讨论组的消息</string>
     <string name="whitelist_summary_discuss_off">接收全部讨论组消息</string>
     <string name="settings_per_discuss_title">分讨论组设置</string>
+    <string name="select_download_dir">请选择二维码的存放文件夹，推荐默认的Download（下载）文件夹</string>
     <plurals name="settings_per_group_summary_on">
         <item quantity="other">只接收 %d 个群的消息</item>
     </plurals>

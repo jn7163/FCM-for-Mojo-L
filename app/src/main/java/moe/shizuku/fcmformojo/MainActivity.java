@@ -75,7 +75,20 @@ public class MainActivity extends BaseActivity {
             Intent intent = volume.createAccessIntent(Environment.DIRECTORY_DOWNLOADS);
             startActivityForResult(intent, REQUEST_CODE);
             */
-            FFMSettings.putDownloadUri("content://com.android.externalstorage.documents/tree/primary%3ADownload");
+            boolean requestPermission = true;
+            for (UriPermission up : getContentResolver().getPersistedUriPermissions()) {
+                Log.d("MainActivity", up.toString());
+                if (up.isWritePermission()) {
+                    requestPermission = false;
+                    FFMSettings.putDownloadUri(up.getUri().toString());
+                    break;
+                }
+            }
+            if (requestPermission) {
+                Toast.makeText(this, R.string.select_download_dir, Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                startActivityForResult(intent, REQUEST_CODE);
+            }
         } catch (Exception e) {
             Toast.makeText(this, R.string.cannot_request_permission, Toast.LENGTH_LONG).show();
             Log.wtf("FFM", "can't use Scoped Directory Access", e);
@@ -86,7 +99,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //Useless Now
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             if (data != null) {
                 getContentResolver().takePersistableUriPermission(data.getData(),

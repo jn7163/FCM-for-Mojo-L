@@ -148,6 +148,7 @@
     <string name="whitelist_summary_discuss_on">有効にした討論からのメッセージを受信するのみ</string>
     <string name="whitelist_summary_discuss_off">すべての討論からのメッセージを受信する</string>
     <string name="settings_per_discuss_title">討論設定</string>
+    <string name="select_download_dir">ダウンロードフォルダを選択してください。</string>
     <plurals name="settings_per_group_summary_on">
         <item quantity="zero">％d個グループからのメッセージを受信するのみ</item>
         <item quantity="one">％d個グループからのメッセージを受信するのみ</item>

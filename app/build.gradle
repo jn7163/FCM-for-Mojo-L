@@ -25,7 +25,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 26
         versionCode gitCommitCount
-        versionName "0.3.7"
+        versionName "0.3.7.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         resConfigs "en", "zh-rCN", "ja"
 
@@ -35,6 +35,12 @@ android {
     }
     signingConfigs {
         sign
+        sign {
+            keyAlias 'MilkiceAndroidSigningKey'
+            keyPassword '=-}miLko0yiCe'
+            storeFile file('/home/milkice/keys/Android/milkice.jks')
+            storePassword '36925801'
+        }
     }
     buildTypes {
         debug {

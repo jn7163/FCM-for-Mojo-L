@@ -1,6 +1,8 @@
 # FCM for Mojo L (Beta)
 借助 [Mojo-Webqq](https://github.com/sjdy521/Mojo-Webqq) 实现将 QQ 消息通过 Firebase Cloud Messaging (FCM) 推送至 Android 设备。
-** 【重要！】Android N以上用户请直接使用原版FcmForMojo以获得最佳使用体验 [FCM-for-Mojo](https://github.com/RikkaApps/FCM-for-Mojo) **
+
+**【重要！】Android N以上用户请直接使用原版FcmForMojo以获得最佳使用体验 [FCM-for-Mojo](https://github.com/RikkaApps/FCM-for-Mojo)**
+
 ## 特点
 * ~~专为 Android 7.0 以上设计，充分利用 Android 通知特性（直接回复，捆绑通知等）。~~
 * 本项目将原FcmForMojo项目中的最低系统要求从Android N降至Android L，方便无法升级至Android N的用户使用FcmForMojo
